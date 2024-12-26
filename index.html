@@ -9,135 +9,172 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-</head>
+</head> 
 
-<body class="bg-slate-100">
+<body class="bg-slate-100 overflow-x-hidden">
 
+    <!-- Header principal avec positionnement fixe et ombre -->
     <header class="flex items-center justify-between px-6 py-4 bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+        <!-- Logo et nom de la marque -->
         <a href="" class="flex items-center space-x-2">
-            <img src="images/logo.jpg" alt="Logo" class="w-10 h-10 rounded-full">
-            <span class="text-xl font-bold text-gray-900">FitFlow</span>
+            <!-- Image du logo avec taille responsive -->
+            <img src="images/logo.jpg" alt="Logo" class="w-8 h-8 md:w-10 md:h-10 rounded-full">
+            <!-- Nom de la marque avec taille de police responsive -->
+            <span class="text-lg md:text-xl font-bold text-gray-900">FitFlow</span>
         </a>
-        <nav class="hidden md:flex space-x-6">
-            <a href="#hero" class="text-gray-700 hover:text-green-500 ">Accueil</a>
-            <a href="#programmes" class="text-gray-700 hover:text-green-500 ">Programmes</a>
-            <a href="#features" class="text-gray-700 hover:text-green-500 ">Fonctionnalités</a>
-            <a href="#testimonials" class="text-gray-700 hover:text-green-500 ">Témoignages</a>
-            <a href="#pricing" class="text-gray-700 hover:text-green-500 ">Tarifs</a>
-            <a href="#faq" class="text-gray-700 hover:text-green-500 ">FAQ</a>
+        
+        <!-- Bouton menu burger - visible uniquement sur mobile -->
+        <button class="md:hidden" onclick="toggleMenu()">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
+            </svg>
+        </button>
+        
+        <!-- Menu mobile avec overlay semi-transparent -->
+        <div id="mobileMenu" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 z-50">
+            <!-- Panneau latéral blanc pour le menu -->
+            <div class="bg-white h-full w-64 p-6 absolute right-0">
+                <!-- Bouton de fermeture en haut à droite -->
+                <button onclick="toggleMenu()" class="absolute top-4 right-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <!-- Navigation mobile avec liens empilés verticalement -->
+                <nav class="flex flex-col space-y-4 mt-8">
+                    <!-- Liens de navigation avec effet hover vert -->
+                    <a href="#hero" class="text-gray-700 hover:text-green-500">Accueil</a>
+                    <a href="#programmes" class="text-gray-700 hover:text-green-500">Programmes</a>
+                    <a href="#features" class="text-gray-700 hover:text-green-500">Fonctionnalités</a>
+                    <a href="#testimonials" class="text-gray-700 hover:text-green-500">Témoignages</a>
+                    <a href="#pricing" class="text-gray-700 hover:text-green-500">Tarifs</a>
+                    <a href="#faq" class="text-gray-700 hover:text-green-500">FAQ</a>
+                </nav>
+            </div>
+        </div>
+        
+        <!-- Navigation desktop - masquée sur mobile, visible sur md et plus -->
+        <nav class="hidden md:flex space-x-4 lg:space-x-6">
+            <!-- Liens de navigation horizontaux avec taille responsive et effet hover -->
+            <a href="#hero" class="text-sm lg:text-base text-gray-700 hover:text-green-500">Accueil</a>
+            <a href="#programmes" class="text-sm lg:text-base text-gray-700 hover:text-green-500">Programmes</a>
+            <a href="#features" class="text-sm lg:text-base text-gray-700 hover:text-green-500">Fonctionnalités</a>
+            <a href="#testimonials" class="text-sm lg:text-base text-gray-700 hover:text-green-500">Témoignages</a>
+            <a href="#pricing" class="text-sm lg:text-base text-gray-700 hover:text-green-500">Tarifs</a>
+            <a href="#faq" class="text-sm lg:text-base text-gray-700 hover:text-green-500">FAQ</a>
         </nav>
-        <button class="px-4 py-2 text-white bg-green-500 rounded-md hover:bg-green-600">Connexion</button>
+        <!-- Bouton de connexion - masqué sur mobile, visible sur md et plus -->
+        <button class="hidden md:block px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base text-white bg-green-500 rounded-md hover:bg-green-600">Connexion</button>
     </header>
 
     <section id="hero"
-        class="relative bg-gray-900 text-white w-[80%] mx-auto border-2 border-gray-700 rounded-[4rem] mt-20"
+        class="relative bg-gray-900 text-white w-[95%] md:w-[90%] lg:w-[80%] mx-auto border-2 border-gray-700 rounded-[2rem] md:rounded-[4rem] mt-16 md:mt-20"
         data-aos="fade-up">
         <div
-            class="container mx-auto flex flex-col-reverse md:flex-row items-center px-6 py-16 space-y-6 md:space-y-0 md:space-x-10">
+            class="container mx-auto flex flex-col-reverse md:flex-row items-center px-4 md:px-6 py-12 md:py-16 space-y-6 md:space-y-0 md:space-x-10">
             <!-- Left Content -->
             <div class="flex-1 text-center md:text-left">
-                <h1 class="text-4xl font-extrabold md:text-5xl">
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold">
                     Votre coach fitness personnel
                 </h1>
-                <p class="mt-4 text-gray-300">
+                <p class="mt-4 text-sm md:text-base text-gray-300">
                     FitFlow est votre compagnon d'entraînement intelligent qui utilise l'IA pour créer des programmes
                     personnalisés et suivre vos progrès en temps réel.
                 </p>
                 <div class="mt-6 flex justify-center md:justify-start space-x-4">
-                    <a href="#" class="px-6 py-3 text-lg font-medium bg-green-500 rounded-md hover:bg-green-600">
+                    <a href="#" class="px-4 py-2 md:px-6 md:py-3 text-sm md:text-lg font-medium bg-green-500 rounded-md hover:bg-green-600">
                         Télécharger →
                     </a>
                     <a href="#"
-                        class="px-6 py-3 text-lg font-medium bg-white text-gray-900 rounded-md hover:bg-gray-200">
+                        class="px-4 py-2 md:px-6 md:py-3 text-sm md:text-lg font-medium bg-white text-gray-900 rounded-md hover:bg-gray-200">
                         En savoir plus
                     </a>
                 </div>
-                <div class="mt-10 flex space-x-8">
+                <div class="mt-8 md:mt-10 flex justify-center md:justify-start space-x-8">
                     <div>
-                        <p class="text-3xl font-bold">4.9</p>
-                        <p class="text-gray-400">Note App Store</p>
+                        <p class="text-2xl md:text-3xl font-bold">4.9</p>
+                        <p class="text-sm md:text-base text-gray-400">Note App Store</p>
                     </div>
                     <div>
-                        <p class="text-3xl font-bold">1M+</p>
-                        <p class="text-gray-400">Utilisateurs actifs</p>
+                        <p class="text-2xl md:text-3xl font-bold">1M+</p>
+                        <p class="text-sm md:text-base text-gray-400">Utilisateurs actifs</p>
                     </div>
                 </div>
             </div>
 
             <!-- Right Image -->
             <div class="flex-1 flex justify-center">
-                <img src="images/2.svg" alt="App Mockup" class="w-[42rem] md:w-[42rem]">
+                <img src="images/2.svg" alt="App Mockup" class="w-full max-w-[32rem] md:max-w-[42rem]">
             </div>
         </div>
     </section>
 
-    <section id="programmes" class="bg-white py-16" data-aos="fade-up">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold">Pour tous les objectifs fitness</h2>
-                <p class="mt-4 text-gray-600">
+    <section id="programmes" class="bg-white py-8 md:py-16" data-aos="fade-up">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold">Pour tous les objectifs fitness</h2>
+                <p class="mt-4 text-sm md:text-base text-gray-600">
                     Que vous soyez débutant ou athlète confirmé, FitFlow s'adapte à votre niveau et vos objectifs.
                 </p>
-                <p class="mt-2 text-gray-600">
+                <p class="mt-2 text-sm md:text-base text-gray-600">
                     Des programmes sur mesure pour atteindre vos objectifs plus rapidement.
                 </p>
-                <a href="#" class="mt-4 inline-block text-green-500 hover:text-green-600 hover:underline">Découvrir tous
-                    les
-                    programmes →</a>
+                <a href="#" class="mt-4 inline-block text-sm md:text-base text-green-500 hover:text-green-600 hover:underline">Découvrir tous
+                    les programmes →</a>
             </div>
-            <div class="flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-8">
+            <div class="flex flex-col md:flex-row justify-center space-y-6 md:space-y-0 md:space-x-6 lg:space-x-8">
                 <!-- Perte de poids -->
                 <div class="flex-1 bg-gray-200 rounded-[2rem] text-center shadow-lg hover:border-2 hover:border-green-500"
                     data-aos="fade-left">
                     <img src="images/perte.gif" alt="Perte de poids"
-                        class="w-full h-[397px] object-cover mb-4 rounded-t-[2rem]">
-                    <h3 class="text-xl font-bold">Perte de poids</h3>
-                    <p class="mt-2 text-gray-600">
+                        class="w-full h-[300px] md:h-[397px] object-cover mb-4 rounded-t-[2rem]">
+                    <h3 class="text-lg md:text-xl font-bold">Perte de poids</h3>
+                    <p class="mt-2 text-sm md:text-base text-gray-600 px-2">
                         Programmes adaptés pour une perte de poids saine et durable.
                     </p>
                     <button
-                        class="m-4 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600">Commencer</button>
+                        class="m-4 px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base bg-green-500 text-white rounded-md hover:bg-green-600">Commencer</button>
                 </div>
                 <!-- Musculation -->
                 <div class="flex-1 bg-gray-200 rounded-[2rem] text-center shadow-lg hover:border-2 hover:border-green-500"
                     data-aos="fade-left">
                     <img src="images/Coach.gif" alt="Musculation"
-                        class="w-full h-[397px] object-cover mb-4 rounded-t-[2rem]">
-                    <h3 class="text-xl font-bold">Musculation</h3>
-                    <p class="mt-2 text-gray-600">
+                        class="w-full h-[300px] md:h-[397px] object-cover mb-4 rounded-t-[2rem]">
+                    <h3 class="text-lg md:text-xl font-bold">Musculation</h3>
+                    <p class="mt-2 text-sm md:text-base text-gray-600 px-2">
                         Programmes de musculation ciblés pour des résultats visibles.
                     </p>
                     <button
-                        class="m-4 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600">Commencer</button>
+                        class="m-4 px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base bg-green-500 text-white rounded-md hover:bg-green-600">Commencer</button>
                 </div>
                 <!-- Cardio -->
                 <div class="flex-1 bg-gray-200 rounded-[2rem] text-center shadow-lg hover:border-2 hover:border-green-500"
                     data-aos="fade-left">
                     <img src="images/cardio.gif" alt="Cardio"
-                        class="w-full h-[397px] object-cover mb-4 rounded-t-[2rem]">
-                    <h3 class="text-xl font-bold">Cardio</h3>
-                    <p class="mt-2 text-gray-600">
+                        class="w-full h-[300px] md:h-[397px] object-cover mb-4 rounded-t-[2rem]">
+                    <h3 class="text-lg md:text-xl font-bold">Cardio</h3>
+                    <p class="mt-2 text-sm md:text-base text-gray-600 px-2">
                         Améliorez votre endurance avec nos programmes cardio.
                     </p>
                     <button
-                        class="m-4 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600">Commencer</button>
+                        class="m-4 px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base bg-green-500 text-white rounded-md hover:bg-green-600">Commencer</button>
                 </div>
             </div>
-            <div class="text-center mt-12">
+            <div class="text-center mt-8 md:mt-12">
                 <button
-                    class="px-6 py-3 bg-green-500 text-white rounded-md hover:bg-green-600 hover:scale-105 transition-transform">
+                    class="px-4 py-2 md:px-6 md:py-3 text-sm md:text-base bg-green-500 text-white rounded-md hover:bg-green-600 hover:scale-105 transition-transform">
                     Plus de 30 programmes spécialisés
                 </button>
             </div>
         </div>
     </section>
 
-    <section id="features" class="bg-white py-16">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center">
+    <section id="features" class="bg-white py-12 md:py-16">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
                 <!-- Left Image -->
-                <div class="flex-1 flex justify-center mb-8 md:mb-0" data-aos="fade-right">
-                    <img src="images/hero.svg" alt="App Features" class="w-[42rem] md:w-[42rem]">
+                <div class="flex-1 flex justify-center" data-aos="fade-right">
+                    <img src="images/hero.svg" alt="App Features" class="w-full max-w-[32rem] md:max-w-[42rem]">
                 </div>
                 <!-- Right Content -->
                 <div class="flex-1" data-aos="fade-left">
@@ -145,14 +182,14 @@
                         <!-- Tracking -->
                         <div class="p-4 bg-gray-100 rounded-md hover:border-2 hover:border-green-500">
                             <div class="flex items-center gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                <h3 class="text-lg font-bold">Suivi des progrès</h3>
+                                <h3 class="text-base md:text-lg font-bold">Suivi des progrès</h3>
                             </div>
-                            <p class="mt-2 text-gray-600">
+                            <p class="mt-2 text-sm md:text-base text-gray-600">
                                 Suivez vos performances et votre progression avec des statistiques détaillées.
                             </p>
                         </div>
@@ -160,14 +197,14 @@
                         <!-- Nutrition -->
                         <div class="p-4 bg-gray-900 rounded-lg hover:border-2 hover:border-green-500">
                             <div class="flex items-center gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24"
                                     stroke="white">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                 </svg>
-                                <h3 class="text-lg font-bold text-white">Plans nutritionnels</h3>
+                                <h3 class="text-base md:text-lg font-bold text-white">Plans nutritionnels</h3>
                             </div>
-                            <p class="mt-2 text-white">
+                            <p class="mt-2 text-sm md:text-base text-white">
                                 Des plans alimentaires personnalisés pour optimiser vos résultats.
                             </p>
                         </div>
@@ -175,14 +212,14 @@
                         <!-- Community -->
                         <div class="p-4 bg-gray-100 rounded-lg hover:border-2 hover:border-green-500">
                             <div class="flex items-center gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                                 </svg>
-                                <h3 class="text-lg font-bold">Communauté active</h3>
+                                <h3 class="text-base md:text-lg font-bold">Communauté active</h3>
                             </div>
-                            <p class="mt-2 text-gray-600">
+                            <p class="mt-2 text-sm md:text-base text-gray-600">
                                 Rejoignez une communauté motivée et partagez vos succès.
                             </p>
                         </div>
@@ -190,16 +227,16 @@
                         <!-- Coaching -->
                         <div class="p-4 bg-gray-900 rounded-lg hover:border-2 hover:border-green-500">
                             <div class="flex items-center gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24"
                                     stroke="white">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                <h3 class="text-lg font-bold text-white">Coaching virtuel</h3>
+                                <h3 class="text-base md:text-lg font-bold text-white">Coaching virtuel</h3>
                             </div>
-                            <p class="mt-2 text-white">
+                            <p class="mt-2 text-sm md:text-base text-white">
                                 Un coach virtuel disponible 24/7 pour vous guider et vous motiver.
                             </p>
                         </div>
@@ -207,14 +244,14 @@
                         <!-- Workouts -->
                         <div class="p-4 bg-gray-100 rounded-lg hover:border-2 hover:border-green-500">
                             <div class="flex items-center gap-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                 </svg>
-                                <h3 class="text-lg font-bold">Bibliothèque d'exercices</h3>
+                                <h3 class="text-base md:text-lg font-bold">Bibliothèque d'exercices</h3>
                             </div>
-                            <p class="mt-2 text-gray-600">
+                            <p class="mt-2 text-sm md:text-base text-gray-600">
                                 Plus de 500 exercices avec guides vidéo et instructions détaillées.
                             </p>
                         </div>
@@ -224,42 +261,45 @@
         </div>
     </section>
 
-    <section id="testimonials" class="bg-slate-100 py-8 w-[80%] mx-auto mt-4" data-aos="fade-up">
-        <div class="container mx-auto w-[70%]">
+    <section id="testimonials" class="bg-slate-100 py-8 w-[95%] md:w-[80%] mx-auto mt-4" data-aos="fade-up">
+        <div class="container mx-auto w-[95%] md:w-[70%]">
             <h2 class="text-2xl font-bold text-center mb-6">Témoignages</h2>
             <p class="text-center mb-8">
                 Découvrez les résultats impressionnants obtenus par nos membres grâce à FitFlow.
             </p>
-            <div class="flex justify-center gap-6">
-                <div class="flex-1 flex flex-row gap-6">
-                    <div class="p-4 rounded-lg ">
-                        <p class="text-gray-800 mb-4">"Grâce à FitFlow, j'ai perdu 15kg en 6 mois tout en me musclant.
-                            Les
-                            programmes sont vraiment adaptés et motivants!"</p>
+            <!-- Modification de la structure des flex containers -->
+            <div class="flex flex-col gap-6">
+                <!-- Conteneur des témoignages -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Témoignage 1 -->
+                    <div class="p-6 rounded-lg bg-white shadow-md hover:shadow-lg transition-shadow">
+                        <p class="text-gray-800 mb-4">"Grâce à FitFlow, j'ai perdu 15kg en 6 mois tout en me musclant. Les programmes sont vraiment adaptés et motivants!"</p>
                         <div class="flex items-center">
-                            <img src="images/temoin1.jpg" alt="Sophie Martin" class="h-10 w-10 rounded-full mr-3">
+                            <img src="images/temoin1.jpg" alt="Sophie Martin" class="h-12 w-12 rounded-full mr-3">
                             <div>
                                 <p class="font-bold">Sophie Martin</p>
                                 <p class="text-sm text-gray-600">Membre depuis 1 an</p>
                             </div>
                         </div>
                     </div>
-                    <div class="p-4 bg-green-100 rounded-lg ">
-                        <p class="text-gray-800 mb-4">"Le suivi nutritionnel et les conseils personnalisés m'ont permis
-                            d'atteindre mes objectifs plus rapidement que prévu."</p>
+
+                    <!-- Témoignage 2 -->
+                    <div class="p-6 rounded-lg bg-green-50 shadow-md hover:shadow-lg transition-shadow">
+                        <p class="text-gray-800 mb-4">"Le suivi nutritionnel et les conseils personnalisés m'ont permis d'atteindre mes objectifs plus rapidement que prévu."</p>
                         <div class="flex items-center">
-                            <img src="images/temoin2.jpg" alt="Thomas Dubois" class="h-10 w-10 rounded-full mr-3">
+                            <img src="images/temoin2.jpg" alt="Thomas Dubois" class="h-12 w-12 rounded-full mr-3">
                             <div>
                                 <p class="font-bold">Thomas Dubois</p>
                                 <p class="text-sm text-gray-600">Membre depuis 8 mois</p>
                             </div>
                         </div>
                     </div>
-                    <div class="p-4 bg-blue-100 rounded-lg ">
-                        <p class="text-gray-800 mb-4">"La communauté est super motivante et les coachs virtuels sont
-                            toujours disponibles pour répondre à mes questions."</p>
+
+                    <!-- Témoignage 3 -->
+                    <div class="p-6 rounded-lg bg-blue-50 shadow-md hover:shadow-lg transition-shadow">
+                        <p class="text-gray-800 mb-4">"La communauté est super motivante et les coachs virtuels sont toujours disponibles pour répondre à mes questions."</p>
                         <div class="flex items-center">
-                            <img src="images/temoin3.jpg" alt="Julie Leroux" class="h-10 w-10 rounded-full mr-3">
+                            <img src="images/temoin3.jpg" alt="Julie Leroux" class="h-12 w-12 rounded-full mr-3">
                             <div>
                                 <p class="font-bold">Julie Leroux</p>
                                 <p class="text-sm text-gray-600">Membre depuis 6 mois</p>
@@ -271,16 +311,16 @@
         </div>
     </section>
 
-    <section id="pricing" class="bg-black text-white py-16 w-[80%] mx-auto rounded-[4rem] mt-4" data-aos="fade-up">
-        <div class="container mx-auto w-[80%] mb-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Nos abonnements annuels</h2>
+    <section id="pricing" class="bg-black text-white py-8 md:py-16 w-[95%] md:w-[80%] mx-auto rounded-[2rem] md:rounded-[4rem] mt-4" data-aos="fade-up">
+        <div class="container mx-auto w-[95%] md:w-[80%] mb-4">
+            <h2 class="text-3xl font-bold text-center mb-8 md:mb-12">Nos abonnements annuels</h2>
 
-            <div class="grid grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
                 <!-- Basic Plan -->
-                <div class="bg-zinc-900 p-8 rounded-xl hover:border-2 hover:border-green-500 ">
-                    <h3 class="text-xl font-semibold mb-4">Essentiel</h3>
-                    <p class="text-3xl font-bold mb-6">89,99 €<span class="text-sm font-normal">/an</span></p>
-                    <ul class="space-y-4 mb-8">
+                <div class="bg-zinc-900 p-4 md:p-8 rounded-xl hover:border-2 hover:border-green-500 transform transition duration-300 hover:scale-105">
+                    <h3 class="text-lg md:text-xl font-semibold mb-2 md:mb-4">Essentiel</h3>
+                    <p class="text-2xl md:text-3xl font-bold mb-4 md:mb-6">89,99 €<span class="text-xs md:text-sm font-normal">/an</span></p>
+                    <ul class="space-y-2 md:space-y-4 mb-6 md:mb-8 text-sm md:text-base">
                         <li class="flex items-center">
                             <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
@@ -298,17 +338,19 @@
                             Suivi des progrès
                         </li>
                     </ul>
-                    <button
-                        class="w-full py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition">
+                    <button class="w-full py-2 md:py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition text-sm md:text-base">
                         S'abonner
                     </button>
                 </div>
 
                 <!-- Premium Plan -->
-                <div class="bg-zinc-900 p-8 rounded-xl border-2 border-green-500 hover:border-2 hover:border-white">
-                    <h3 class="text-xl font-semibold mb-4">Premium</h3>
-                    <p class="text-3xl font-bold mb-6">149,99 €<span class="text-sm font-normal">/an</span></p>
-                    <ul class="space-y-4 mb-8">
+                <div class="bg-zinc-900 p-4 md:p-8 rounded-xl border-2 border-green-500 hover:border-white transform transition duration-300 hover:scale-105 sm:scale-105 sm:shadow-xl">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-500 px-4 py-1 rounded-full text-sm">
+                        Plus populaire
+                    </div>
+                    <h3 class="text-lg md:text-xl font-semibold mb-2 md:mb-4">Premium</h3>
+                    <p class="text-2xl md:text-3xl font-bold mb-4 md:mb-6">149,99 €<span class="text-xs md:text-sm font-normal">/an</span></p>
+                    <ul class="space-y-2 md:space-y-4 mb-6 md:mb-8 text-sm md:text-base">
                         <li class="flex items-center">
                             <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
@@ -334,17 +376,16 @@
                             Plan nutritionnel
                         </li>
                     </ul>
-                    <button
-                        class="w-full py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition">
+                    <button class="w-full py-2 md:py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition text-sm md:text-base">
                         S'abonner
                     </button>
                 </div>
 
                 <!-- Elite Plan -->
-                <div class="bg-zinc-900 p-8 rounded-xl hover:border-2 hover:border-green-500">
-                    <h3 class="text-xl font-semibold mb-4">Elite</h3>
-                    <p class="text-3xl font-bold mb-6">249,99 €<span class="text-sm font-normal">/an</span></p>
-                    <ul class="space-y-4 mb-8">
+                <div class="bg-zinc-900 p-4 md:p-8 rounded-xl hover:border-2 hover:border-green-500 transform transition duration-300 hover:scale-105 sm:col-span-2 lg:col-span-1">
+                    <h3 class="text-lg md:text-xl font-semibold mb-2 md:mb-4">Elite</h3>
+                    <p class="text-2xl md:text-3xl font-bold mb-4 md:mb-6">249,99 €<span class="text-xs md:text-sm font-normal">/an</span></p>
+                    <ul class="space-y-2 md:space-y-4 mb-6 md:mb-8 text-sm md:text-base">
                         <li class="flex items-center">
                             <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
@@ -370,8 +411,7 @@
                             Accès prioritaire nouveautés
                         </li>
                     </ul>
-                    <button
-                        class="w-full py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition">
+                    <button class="w-full py-2 md:py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-200 transition text-sm md:text-base">
                         S'abonner
                     </button>
                 </div>
@@ -379,14 +419,14 @@
         </div>
     </section>
 
-    <section id="faq" class="bg-slate-100 py-16 w-[80%] mx-auto mt-4 rounded-[4rem]">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12">Questions fréquentes</h2>
-            <div class="max-w-3xl mx-auto space-y-6">
+    <section id="faq" class="bg-slate-100 py-8 md:py-16 w-[95%] md:w-[80%] mx-auto mt-4 rounded-[2rem] md:rounded-[4rem]">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">Questions fréquentes</h2>
+            <div class="max-w-3xl mx-auto space-y-4 md:space-y-6">
                 <!-- Question 1 -->
-                <div class="border-2 border-gray-200 rounded-lg p-6 hover:border-green-500" data-aos="fade-left">
-                    <h3 class="text-xl font-semibold mb-3">Comment fonctionne le coach virtuel ?</h3>
-                    <p class="text-gray-600">
+                <div class="border-2 border-gray-200 rounded-lg p-4 md:p-6 hover:border-green-500" data-aos="fade-left">
+                    <h3 class="text-lg md:text-xl font-semibold mb-2 md:mb-3">Comment fonctionne le coach virtuel ?</h3>
+                    <p class="text-sm md:text-base text-gray-600">
                         Notre coach virtuel utilise l'intelligence artificielle pour analyser vos objectifs, votre
                         niveau et vos préférences. Il adapte ensuite vos programmes d'entraînement en temps réel en
                         fonction de vos progrès.
@@ -394,36 +434,36 @@
                 </div>
 
                 <!-- Question 2 -->
-                <div class="border-2 border-gray-200 rounded-lg p-6 hover:border-green-500" data-aos="fade-right">
-                    <h3 class="text-xl font-semibold mb-3">Puis-je annuler mon abonnement à tout moment ?</h3>
-                    <p class="text-gray-600">
+                <div class="border-2 border-gray-200 rounded-lg p-4 md:p-6 hover:border-green-500" data-aos="fade-right">
+                    <h3 class="text-lg md:text-xl font-semibold mb-2 md:mb-3">Puis-je annuler mon abonnement à tout moment ?</h3>
+                    <p class="text-sm md:text-base text-gray-600">
                         Oui, vous pouvez annuler votre abonnement à tout moment. Il n'y a pas d'engagement de durée
                         minimale et vous serez remboursé au prorata des jours non utilisés.
                     </p>
                 </div>
 
                 <!-- Question 3 -->
-                <div class="border-2 border-gray-200 rounded-lg p-6 hover:border-green-500" data-aos="fade-left">
-                    <h3 class="text-xl font-semibold mb-3">Les plans nutritionnels sont-ils personnalisés ?</h3>
-                    <p class="text-gray-600">
+                <div class="border-2 border-gray-200 rounded-lg p-4 md:p-6 hover:border-green-500" data-aos="fade-left">
+                    <h3 class="text-lg md:text-xl font-semibold mb-2 md:mb-3">Les plans nutritionnels sont-ils personnalisés ?</h3>
+                    <p class="text-sm md:text-base text-gray-600">
                         Absolument ! Nos plans nutritionnels sont créés sur mesure en fonction de vos objectifs, de vos
                         préférences alimentaires et de vos éventuelles restrictions ou allergies.
                     </p>
                 </div>
 
                 <!-- Question 4 -->
-                <div class="border-2 border-gray-200 rounded-lg p-6 hover:border-green-500" data-aos="fade-right">
-                    <h3 class="text-xl font-semibold mb-3">Ai-je besoin d'équipement spécifique ?</h3>
-                    <p class="text-gray-600">
+                <div class="border-2 border-gray-200 rounded-lg p-4 md:p-6 hover:border-green-500" data-aos="fade-right">
+                    <h3 class="text-lg md:text-xl font-semibold mb-2 md:mb-3">Ai-je besoin d'équipement spécifique ?</h3>
+                    <p class="text-sm md:text-base text-gray-600">
                         Non, la plupart de nos programmes peuvent être suivis avec peu ou pas d'équipement. Pour ceux
                         qui ont accès à une salle de sport, des variantes avec équipement sont proposées.
                     </p>
                 </div>
 
                 <!-- Question 5 -->
-                <div class="border-2 border-gray-200 rounded-lg p-6 hover:border-green-500" data-aos="fade-up">
-                    <h3 class="text-xl font-semibold mb-3">Comment accéder aux séances live ?</h3>
-                    <p class="text-gray-600">
+                <div class="border-2 border-gray-200 rounded-lg p-4 md:p-6 hover:border-green-500" data-aos="fade-up">
+                    <h3 class="text-lg md:text-xl font-semibold mb-2 md:mb-3">Comment accéder aux séances live ?</h3>
+                    <p class="text-sm md:text-base text-gray-600">
                         Les séances live sont disponibles avec l'abonnement Elite. Vous recevrez un planning
                         hebdomadaire et pourrez vous connecter directement depuis l'application pour interagir avec
                         votre coach.
@@ -433,29 +473,29 @@
         </div>
     </section>
 
-    <section class="bg-green-200 py-16 w-[60%] mx-auto m-4 rounded-[4rem]">
-        <div class="container mx-auto px-6 mt-10">
+    <section class="bg-green-200 py-8 md:py-16 w-[95%] md:w-[60%] mx-auto m-4 rounded-[2rem] md:rounded-[4rem]">
+        <div class="container mx-auto px-4 md:px-6 mt-6 md:mt-10">
             <div class="flex flex-col md:flex-row items-center justify-between">
                 <!-- Left Content -->
-                <div class="md:w-1/2 mb-8 md:mb-0">
-                    <h2 class="text-4xl font-bold mb-4" data-aos="fade-right">Commencez dès maintenant</h2>
-                    <p class="mb-8" data-aos="fade-up">
+                <div class="w-full md:w-1/2 mb-8 md:mb-0 text-center md:text-left">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-right">Commencez dès maintenant</h2>
+                    <p class="text-sm md:text-base mb-6 md:mb-8" data-aos="fade-up">
                         Téléchargez FitFlow sur l'App Store et Google Play
                         pour commencer votre transformation ! Profitez de
                         14 jours d'essai gratuit sur tous nos abonnements.
                     </p>
-                    <div class="flex space-x-4">
+                    <div class="flex justify-center md:justify-start space-x-4">
                         <a href="#" class="hover:opacity-80" data-aos="fade-right">
-                            <img src="images/app.png" alt="Télécharger sur l'App Store" class="h-10">
+                            <img src="images/app.png" alt="Télécharger sur l'App Store" class="h-8 md:h-10">
                         </a>
                         <a href="#" class="hover:opacity-80" data-aos="fade-left">
-                            <img src="images/google.png" alt="Disponible sur Google Play" class="h-10">
+                            <img src="images/google.png" alt="Disponible sur Google Play" class="h-8 md:h-10">
                         </a>
                     </div>
                 </div>
                 <!-- Right Image -->
-                <div class="md:w-1/2" data-aos="fade-left">
-                    <img src="images/dowload.svg" alt="Capture d'écran de l'app" class="w-[250px] mx-auto">
+                <div class="w-full md:w-1/2" data-aos="fade-left">
+                    <img src="images/dowload.svg" alt="Capture d'écran de l'app" class="w-[200px] md:w-[250px] mx-auto">
                 </div>
             </div>
         </div>
@@ -463,29 +503,37 @@
 
     <footer class="bg-white py-8">
         <div class="container mx-auto px-6">
-            <div class="flex justify-between items-center">
+            <!-- Section principale du footer -->
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+                <!-- Logo -->
                 <div class="flex items-center space-x-2">
                     <img src="images/logo.jpg" alt="FitFlow Logo" class="w-8 h-8">
                     <span class="text-lg font-semibold">FitFlow</span>
                 </div>
-                <nav class="flex space-x-6">
-                    <a href="#hero" class="text-gray-600 hover:text-gray-900 ">Accueil</a>
-                    <a href="#programmes" class="text-gray-600 hover:text-gray-900 ">Programmes</a>
-                    <a href="#features" class="text-gray-600 hover:text-gray-900 ">Fonctionnalités</a>
-                    <a href="#testimonials" class="text-gray-600 hover:text-gray-900 ">Témoignages</a>
-                    <a href="#pricing" class="text-gray-600 hover:text-gray-900 ">Tarifs</a>
-                    <a href="#faq" class="text-gray-600 hover:text-gray-900 ">FAQ</a>
+                
+                <!-- Navigation -->
+                <nav class="flex flex-wrap justify-center gap-4 md:space-x-6">
+                    <a href="#hero" class="text-gray-600 hover:text-gray-900">Accueil</a>
+                    <a href="#programmes" class="text-gray-600 hover:text-gray-900">Programmes</a>
+                    <a href="#features" class="text-gray-600 hover:text-gray-900">Fonctionnalités</a>
+                    <a href="#testimonials" class="text-gray-600 hover:text-gray-900">Témoignages</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-gray-900">Tarifs</a>
+                    <a href="#faq" class="text-gray-600 hover:text-gray-900">FAQ</a>
                 </nav>
+                
+                <!-- Réseaux sociaux -->
                 <div class="flex space-x-4">
-                    <img src="images/instagram.png" alt="Instagram" class="w-10">
-                    <img src="images/facebook.png" alt="Facebook" class="w-10">
-                    <img src="images/youtube.png" alt="Youtube" class="w-10 rounded-lg">
+                    <img src="images/instagram.png" alt="Instagram" class="w-8 md:w-10">
+                    <img src="images/facebook.png" alt="Facebook" class="w-8 md:w-10">
+                    <img src="images/youtube.png" alt="Youtube" class="w-8 md:w-10 rounded-lg">
                 </div>
             </div>
-            <div class="flex flex-row justify-between items-center mt-4 text-center text-gray-500 text-sm">
+
+            <!-- Section copyright -->
+            <div class="flex flex-col md:flex-row justify-between items-center mt-8 text-center text-gray-500 text-sm space-y-4 md:space-y-0">
                 <p>Copyright © 2024 FitFlow</p>
                 <a href="#" class="hover:text-gray-700">Politique de confidentialité</a>
-                <p class="mt-2">Site réalisé par RZero Dev</p>
+                <p>Site réalisé par RZero Dev</p>
             </div>
         </div>
     </footer>
@@ -499,6 +547,22 @@
             delay: 0,
             easing: 'ease-in-out',
             anchorPlacement: 'top-bottom',
+            disable: 'mobile'
+        });
+    </script>
+
+    <!-- Ajout du script pour le menu mobile -->
+    <script>
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Fermer le menu mobile lors du clic sur un lien
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
         });
     </script>
 
